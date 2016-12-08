@@ -1,0 +1,28 @@
+{
+  "name": "pandoc-service",
+  "version": "1.0.0",
+  "description": "Pandoc with HTTP api",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "mocha --timeout 10000",
+    "lint": "eslint *.js"
+  },
+  "keywords": [
+    "pandoc",
+    "http",
+    "rest",
+    "docker"
+  ],
+  "author": "Dennis Wolters",
+  "license": "ISC",
+  "dependencies": {
+    "pdc": "^0.2.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "eslint": "^3.11.1",
+    "mocha": "^3.2.0"
+  }
+}
