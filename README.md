@@ -5,9 +5,6 @@ just has a command-line interface. In this project, we enable the usage of Pando
 provide a mapping of Pandoc type identifiers to common [media types](https://en.wikipedia.org/wiki/Media_type), 
 and wrap everything in a docker container, so that it can be easily used/deployed.  
 
-**WARNING**: Currently, the docker image is quite big (> 2gb). We will try to make it smaller but it requires a lot of latex dependencies. Due to the size it takes a while to build/download and verify the checksum of the image.
-
-
 ## API
 The API only allows POST requests. The data to be converted must be 
 passed in the request body. The header field `Content-Type` specifies
@@ -29,6 +26,11 @@ This prefix is the official [media type tree for unregistered types](https://en.
 ## Installation with Docker
 To simplify the usage of this project, we wrapped everything into a docker
 container that can easily be deployed on any machine. 
+
+Pandoc uses latex to create pdfs. Since the latex dependencies add roughly 
+2gb to the docker image, we decided to create to images: 
+- `dwolters/pandoc-http:lasted` does not include latex and is therefore unable to create pdf (size ~700mb). The `:lastest` tag is added by default if no tag is specified.
+- `dwolters/pandoc-http:latex` includes latex and be used to create pdfs (size ~2.7gb). It takes a while to build or pull this image.
 
 You can build the image yourself:
 ```sh
@@ -57,7 +59,7 @@ docker rm my-pandoc-http
 ## Installation without Docker
 In order to use this project without using the docker container, you first
 must install [Pandoc](http://pandoc.org/installing.html) and add it to your [`PATH`](https://en.wikipedia.org/wiki/PATH_(variable)). 
-Alternatively, you can set the `PANDOC` env variable to define the location of your pandoc executable., 
+Alternatively, you can set the `PANDOC` env variable to define the location of your pandoc executable.
 
 Afterwards, clone the repository and switch to the proper directory:
 ```sh
