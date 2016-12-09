@@ -53,7 +53,8 @@ docker rm my-pandoc-http
 
 ## Installation without Docker
 In order to use this project without using the docker container, you first
-must install [Pandoc](http://pandoc.org/installing.html) and add it to your [PATH](https://en.wikipedia.org/wiki/PATH_(variable)).
+must install [Pandoc](http://pandoc.org/installing.html) and add it to your [`PATH`](https://en.wikipedia.org/wiki/PATH_(variable)). 
+Alternatively, you can set the `PANDOC` env variable to define the location of your pandoc executable., 
 
 Afterwards, clone the repository and switch to the proper directory:
 ```sh
@@ -84,7 +85,11 @@ HTTP API for Pandoc:
 
 ```
 curl -s -H "Content-Type: text/html" -H "Accept: text/markdown" --data "<h1>My Headline</h1>"  http://localhost:8080/
+curl -s -H "Content-Type: text/html" -H "Accept: docx" --data "<h1>My Headline</h1>"  http://localhost:8080/ > file.docx
+curl -s -H "Content-Type: docx" -H "Accept: text/markdown" --data-binary "@file.docx"  http://localhost:8080/
 ```
+
+Please note that in this example the pandoc identifier for docx files is used. The correct media type would be `application/vnd.openxmlformats-officedocument.wordprocessingml.document`.
 
 ## Acknowledgements
 The Dockerfile is partially based on the Dockerfile of [vpetersson's pandoc container](https://github.com/vpetersson/docker-pandoc).
