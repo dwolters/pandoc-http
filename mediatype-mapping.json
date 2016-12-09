@@ -29,6 +29,7 @@
   "opml": "text/x-opml",
   "org": "",
   "plain": "text/plain",
+  "pdf": "application/pdf",
   "revealjs": "",
   "rst": "",
   "rtf": "application/rtf",
