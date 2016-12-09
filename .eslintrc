@@ -1,6 +1,9 @@
 {
   //Use the recommended code guidelines
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "google"
+  ],
   "parserOptions": {
     //Enable ES6 support
     "ecmaVersion": 6,
@@ -11,9 +14,14 @@
     "node": true,
     "mocha": true
   },
+  "globals": {
+    "Promise": true
+  },
   "rules": {
     //Allow console statements
     "no-console": 0,
+    //Ignore linebreak-style. Git does a proper conversion.
+    "linebreak-style": 0,
     //Only use single quotes
     "curly": [
       "error",
@@ -22,6 +30,10 @@
     "quotes": [
       "error",
       "single"
+    ],
+    "max-len": [
+      "error",
+      200
     ]
   }
 }

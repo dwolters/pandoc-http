@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "test": "mocha --timeout 10000",
-    "lint": "eslint *.js"
+    "lint": "eslint *.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [
     "pandoc",
@@ -16,13 +17,16 @@
   ],
   "author": "Dennis Wolters",
   "license": "ISC",
-  "dependencies": {
-    "pdc": "^0.2.3"
-  },
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "eslint": "^3.11.1",
-    "mocha": "^3.2.0"
+    "eslint-config-google": "^0.7.1",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "fs-promise": "^1.0.0",
+    "raw-body": "^2.1.7"
   }
 }
