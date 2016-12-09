@@ -5,8 +5,11 @@ just has a command-line interface. In this project, we enable the usage of Pando
 provide a mapping of Pandoc type identifiers to common [media types](https://en.wikipedia.org/wiki/Media_type), 
 and wrap everything in a docker container, so that it can be easily used/deployed.  
 
+**WARNING**: Currently, the docker image is quite big (> 2gb). We will try to make it smaller but it requires a lot of latex dependencies. Due to the size it takes a while to build/download and verify the checksum of the image.
+
+
 ## API
-The API only allows POST request. The data to be converted must be 
+The API only allows POST requests. The data to be converted must be 
 passed in the request body. The header field `Content-Type` specifies
 the input type and the header field `Accept` specifies the output type.
  
@@ -21,7 +24,7 @@ a media type for every format supported by Pandoc. Therefore, you can
 also use the Pandoc identifiers in `Content-Type` and `Accept` but this
 is not compliant with the HTTP specification. To be compliant, we support 
 the usage of `application/x.` as a prefix in front of a Pandoc identifier. 
-This prefix is the official [media type tree for unregistered types](https://en.wikipedia.org/wiki/Media_type#Unregistered_x._tree)).
+This prefix is the official [media type tree for unregistered types](https://en.wikipedia.org/wiki/Media_type#Unregistered_x._tree).
 
 ## Installation with Docker
 To simplify the usage of this project, we wrapped everything into a docker
