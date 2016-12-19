@@ -28,9 +28,9 @@ To simplify the usage of this project, we wrapped everything into a docker
 container that can easily be deployed on any machine. 
 
 Pandoc uses latex to create pdfs. Since the latex dependencies add roughly 
-2gb to the docker image, we decided to create to images: 
-- `dwolters/pandoc-http:lasted` does not include latex and is therefore unable to create pdf (size ~700mb). The `:lastest` tag is added by default if no tag is specified.
-- `dwolters/pandoc-http:latex` includes latex and be used to create pdfs (size ~2.7gb). It takes a while to build or pull this image.
+2gb to the docker image, we decided to create two images: 
+- `dwolters/pandoc-http:lasted` does not include latex and is therefore unable to create pdfs (uncompressed ~700mb, compressed ~280mb). The `:lastest` tag is added by default if no tag is specified.
+- `dwolters/pandoc-http:latex` includes latex and be used to create pdfs (uncompressed ~2.7gb, compressed ~2gb). It takes a while to build or pull this image.
 
 You can build the image yourself:
 ```sh
