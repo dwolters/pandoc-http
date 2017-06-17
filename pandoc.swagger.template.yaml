@@ -1,0 +1,26 @@
+swagger: '2.0'
+info:
+  title: Pandoc
+  description: Pandoc Universal Document Converter.
+  version: '1.0'
+  x-sdm-service-type: converter
+host: localhost:8080
+schemes:
+- http
+paths:
+  "/":
+    post:
+      summary: Pandoc Conversion
+      description: Converts data from one media type to another using Pandoc.
+      # 'consumes' automatically generated!
+      # 'produces' automatically generated!
+      parameters:
+      - name: Payload
+        in: body
+        description: Data to convert.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with converted data.
