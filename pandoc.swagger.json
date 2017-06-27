@@ -1,0 +1,74 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Pandoc",
+    "description": "Pandoc Universal Document Converter.",
+    "version": "1.0",
+    "x-sdm-service-type": "converter"
+  },
+  "host": "localhost:8080",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "summary": "Pandoc Conversion",
+        "description": "Converts data from one media type to another using Pandoc.",
+        "parameters": [
+          {
+            "name": "Payload",
+            "in": "body",
+            "description": "Data to convert.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with converted data."
+          }
+        },
+        "consumes": [
+          "application/docbook+xml",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "application/epub+zip",
+          "text/html",
+          "application/json",
+          "application/x-latex",
+          "text/markdown",
+          "text/markdown;type=github",
+          "text/markdown;type=mmd",
+          "text/markdown;type=phpextra",
+          "text/markdown;type=strict",
+          "application/vnd.oasis.opendocument.text",
+          "text/x-opml"
+        ],
+        "produces": [
+          "application/docbook+xml",
+          "application/docbook+xml;version=5",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "application/epub+zip",
+          "application/epub+zip;version=3",
+          "text/html",
+          "text/html;version=5",
+          "application/json",
+          "application/x-latex",
+          "application/x-troff-man",
+          "text/markdown",
+          "text/markdown;type=github",
+          "text/markdown;type=mmd",
+          "text/markdown;type=phpextra",
+          "text/markdown;type=strict",
+          "application/vnd.oasis.opendocument.text",
+          "text/x-opml",
+          "text/plain",
+          "application/rtf",
+          "application/x-texinfo"
+        ]
+      }
+    }
+  }
+}

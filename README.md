@@ -96,5 +96,12 @@ curl -s -H "Content-Type: docx" -H "Accept: text/markdown" --data-binary "@file.
 
 Please note that in this example the pandoc identifier for docx files is used. The correct media type would be `application/vnd.openxmlformats-officedocument.wordprocessingml.document`.
 
+## Swagger Description
+
+The script `generate-swagger-spec.js` automatically generates the Swagger description for this service based on the supported input and output formats (listed by `pandoc --list-[input|output]-formats` respectively). The Swagger description can be generated in both YAML and JSON format. The npm scripts `generate-swagger-json` and `generate-swagger-yaml` can be used to output the generated description into a file with a fixed filename (`pandoc.swagger.json` or `pandoc.swagger.yaml` respectively). To save the description into a file with custom filename, run 
+```sh
+node generate-swagger-spec.js [--json|--yaml] > your-filename-here.ext
+```
+
 ## Acknowledgements
 The Dockerfile is partially based on the Dockerfile of [vpetersson's pandoc container](https://github.com/vpetersson/docker-pandoc).
