@@ -94,4 +94,5 @@ function handleRequest(req, res) {
 }
 let server = http.createServer(handleRequest);
 
-server.listen(process.env.PORT || port, () => console.log('Server started'));
+let p = process.env.PORT || port;
+server.listen(p, () => console.log('Server listening on port ' + p));

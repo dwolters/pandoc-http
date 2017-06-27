@@ -5,9 +5,12 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "start": "node server.js",
     "test": "mocha --timeout 10000",
     "lint": "eslint *.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "generate-swagger-json": "node generate-swagger-spec.js > pandoc.swagger.json",
+    "generate-swagger-yaml": "node generate-swagger-spec.js --yaml > pandoc.swagger.yaml"
   },
   "keywords": [
     "pandoc",
@@ -27,6 +30,7 @@
   },
   "dependencies": {
     "fs-promise": "^1.0.0",
-    "raw-body": "^2.1.7"
+    "raw-body": "^2.1.7",
+    "yamljs": "^0.2.10"
   }
 }
