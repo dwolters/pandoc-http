@@ -68,7 +68,7 @@ function handleRequest(req, res) {
         let inputFile = 'in' + Date.now();
         let outputFile = 'out' + Date.now();
 
-        //Pandoc only supports pdf via latex
+        // Pandoc only supports pdf via latex
         if (pandocOutputType === 'pdf') {
             outputFile += '.pdf';
             pandocOutputType = 'latex';
