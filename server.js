@@ -16,11 +16,19 @@ const port = 80;
  * @param {String} outputFile Path to the output file
  * @param {String} from Type of the input file
  * @param {String} to Desired type of the output file
+ * @param {String} trackChanges Specifies  what  to  do  with insertions, deletions, and comments produced by the MS Word "Track Changes" feature.
  * @return {Promise} Resolves if conversion is successful, otherwise it reject with a corresponding error message.
  */
-function pandoc(inputFile, outputFile, from, to) {
+function pandoc(inputFile, outputFile, from, to, trackChanges) {
     return new Promise((resolve, reject) => {
         let args = ['-f', from, '-t', to, '-o', outputFile, inputFile];
+        if (trackChanges) {
+            if (['all', 'accept', 'reject'].indexOf(trackChanges) === -1) {
+                reject('invalid trackChanges')
+                return
+            }
+            args.push('--track-changes=' + trackChanges)
+        }
         let pandoc = spawn(pandocPath, args);
 
         let error = '';
@@ -62,6 +70,7 @@ function handleRequest(req, res) {
         let inputType = mediaTypeConverter(req.headers['content-type']);
         let outputMediaType = req.headers['accept'];
         let pandocOutputType = mediaTypeConverter(req.headers['accept']);
+        let trackChanges = req.headers['x-track-changes'];
         console.log('Pandoc input type: ', inputType);
         console.log('Pandoc output type: ', pandocOutputType);
 
@@ -76,7 +85,7 @@ function handleRequest(req, res) {
 
         rawBody(req)
             .then((buffer) => fs.writeFile(inputFile, buffer))
-            .then(() => pandoc(inputFile, outputFile, inputType, pandocOutputType))
+            .then(() => pandoc(inputFile, outputFile, inputType, pandocOutputType, trackChanges))
             .then(() => fs.readFile(outputFile))
             .then((result) => {
                 res.setHeader('Content-Type', outputMediaType);
